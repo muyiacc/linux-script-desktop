@@ -1,5 +1,15 @@
-# 使用说明
+# linux-script-desktop
 
-## monitor_and_move_deb_files.sh
 
-此脚本用于移动指定文件后缀到另一个文件夹,便于同步
+linux桌面版脚本
+
+## 使用方法
+
+```bash
+mkdir -p ~/.local/bin
+git clone git@github.com:muyiacc/linux-script-desktop.git ~/.local/bin
+```
+
+```bash
+echo 'export $PATH=$PATH:~/.local/bin'
+```
