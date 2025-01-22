@@ -47,4 +47,3 @@ for source_dir in "${source_dirs[@]}"; do
   fi
   echo
 done
-
