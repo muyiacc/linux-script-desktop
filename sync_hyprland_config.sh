@@ -29,7 +29,7 @@ if [ ! -d "$dest_dir" ]; then
 fi
 
 for source_dir in "${source_dirs[@]}"; do
-  echo "===== start sync ======"
+  # echo "===== start sync ======"
   dir_name=$(basename "$source_dir")
   target_dir="$dest_dir/$dir_name"
   
@@ -38,12 +38,11 @@ for source_dir in "${source_dirs[@]}"; do
     rsync_args+=("--exclude=$exclude_parm")
   done
 
-  rsync -a "${rsync_args[@]}" "$source_dir/" "$target_dir"
+  rsync -azvP --delete "${rsync_args[@]}" "$source_dir/" "$target_dir"
 
-  if [ $? -eq 0 ]; then
-    echo "$dir_name synced"
-  else
-    echo "$dir_name sync failed"
-  fi
-  echo
+  # if [ $? -eq 0 ]; then
+  #   echo "$dir_name synced"
+  # else
+  #   echo "$dir_name sync failed"
+  # fi
 done
