@@ -8,8 +8,8 @@ source_dirs=(
   ~/.config/kitty
   ~/.config/rofi
 )
-dest_dir="$HOME/backup/linux-desktop/dotfiles/hyprland"
-exclude_parms=(
+dest_dir="$HOME/backup/archlinux/dotfiles/hyprland"
+exclude_params=(
   *.bak
   *.swp
   *.lock
@@ -29,16 +29,17 @@ if [ ! -d "$dest_dir" ]; then
 fi
 
 for source_dir in "${source_dirs[@]}"; do
-  # echo "===== start sync ======"
+  echo "===== start sync ======"
+  echo ""
   dir_name=$(basename "$source_dir")
   target_dir="$dest_dir/$dir_name"
   
   rsync_args=()
-  for exclude_parm in "${exclude_parms[@]}"; do
-    rsync_args+=("--exclude=$exclude_parm")
+  for exclude_param in "${exclude_params[@]}"; do
+    rsync_args+=("--exclude=$exclude_param")
   done
 
-  rsync -azvP --delete "${rsync_args[@]}" "$source_dir/" "$target_dir"
+  rsync -azP --delete "${rsync_args[@]}" "$source_dir/" "$target_dir"
 
   # if [ $? -eq 0 ]; then
   #   echo "$dir_name synced"
